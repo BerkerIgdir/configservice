@@ -3,14 +3,18 @@
       name: config-server
     profiles:
       active:
-        - native
+        - git
     cloud:
       config:
         server:
           native:
             searchLocations: classpath:/config
-            #git:
-            # uri: https://github.com/ihuaylupo/config.git
-            #searchPaths: licensingservice
+          git:
+            uri: https://github.com/BerkerIgdir/configservice.git
+            skip-ssl-validation: true
+            search-paths:
+              - src/main/resources/config
+            basedir: classpath:/config
+
   server:
         port: 8071
