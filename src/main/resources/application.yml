@@ -1,6 +1,6 @@
   spring:
     application:
-      name: config-server
+      name: configserver
     profiles:
       active:
         - git
@@ -11,10 +11,11 @@
             searchLocations: classpath:/config
           git:
             uri: https://github.com/BerkerIgdir/configservice.git
-            skip-ssl-validation: true
             search-paths:
-              - src/main/resources/config
-            basedir: classpath:/config
+              - src/main/resources/config/{application}
+#            TO:DO try to build a fallback mechanism, in case of a connection problem with git
+#            basedir: classpath:/config/{application}
+            skip-ssl-validation: true
 
   server:
         port: 8071
